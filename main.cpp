@@ -11,6 +11,7 @@ void suggestedHiddenCase1b();
 void suggestedHiddenCase2();
 void excerciseTest(bool printWithHeight = true);
 
+//
 int main() {
 
 	testInsertion1(true);
