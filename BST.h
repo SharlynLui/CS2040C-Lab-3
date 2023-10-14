@@ -46,12 +46,11 @@ public:
 	void inOrderPrint();
 	void postOrderPrint();
 	void preOrderPrint();
-	T searchMax() { return T(); }; 
-	T searchMin() { return T(); };
+	T searchMax() { return _searchMax(_root)->_item; }
+	T searchMin() { return _searchMin(_root)->_item; }
 	bool exist(T x) { return T(); };
 	T search(T x) { return T(); };
 	T successor(T);
-
 };
 
 
@@ -189,12 +188,18 @@ TreeNode<T>* BinarySearchTree<T>::_insert(TreeNode<T>* current, T x) {
 
 template <class T>
 TreeNode<T>* BinarySearchTree<T>::_searchMax(TreeNode<T>* current) {
+	while (current->_right) {
+		current = current->_right;
+	}
 	return current;
 }
 
 
 template <class T>
 TreeNode<T>* BinarySearchTree<T>::_searchMin(TreeNode<T>* current) {
+	while (current->_left) {
+		current = current->_left;
+	}
 	return current;
 }
 

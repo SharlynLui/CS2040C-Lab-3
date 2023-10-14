@@ -15,7 +15,7 @@ int main() {
 
 	testInsertion1(true);
 	//testExist();
-	//testSearchMinMax();
+	testSearchMinMax();
 	//testSuccessor();
 	//testInsertion2(true);
 
