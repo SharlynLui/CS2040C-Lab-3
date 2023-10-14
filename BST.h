@@ -183,8 +183,8 @@ TreeNode<T>* BinarySearchTree<T>::_insert(TreeNode<T>* current, T x) {
 	else
 		return current; // When the node already existed in the tree
 
+	current->_height = max(current->_left ? current->_left->_height : -1, current->_right ? current->_right->_height : -1) + 1;
 	return current;
-
 }
 
 template <class T>
