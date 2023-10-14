@@ -60,7 +60,7 @@ template <class T>
 void BinarySearchTree<T>::insert(T x)
 {
 	_root = _root ? _insert(_root, x) : new TreeNode<T>(x);
-	if (_size == 0) _size++;
+	_size++;
 }
 
 template <class T>
@@ -127,21 +127,36 @@ BinarySearchTree<T> :: ~BinarySearchTree()
 
 template <class T>
 void BinarySearchTree<T>::inOrderPrint() {
+	_inOrderPrint(_root);
+	cout << endl;
 }
 
 
 template <class T>
 void BinarySearchTree<T>::_inOrderPrint(TreeNode<T>* node) {
+	if (!node) {
+		return;
+	}
+	_inOrderPrint(node->_left);
+	cout << node->_item << " ";
+	_inOrderPrint(node->_right);
 }
-
 
 template <class T>
 void BinarySearchTree<T>::postOrderPrint() {
+	_postOrderPrint(_root);
+	cout << endl;
 }
 
 
 template <class T>
 void BinarySearchTree<T>::_postOrderPrint(TreeNode<T>* node) {
+	if (!node) {
+		return;
+	}
+	_postOrderPrint(node->_left);
+	_postOrderPrint(node->_right);
+	cout << node->_item << " ";
 }
 
 template <class T>
@@ -155,7 +170,6 @@ TreeNode<T>* BinarySearchTree<T>::_insert(TreeNode<T>* current, T x) {
 		else
 		{
 			current->_left = new TreeNode<T>(x);
-			_size++;
 		}
 	}
 	else if (x > current->_item) {
@@ -164,7 +178,6 @@ TreeNode<T>* BinarySearchTree<T>::_insert(TreeNode<T>* current, T x) {
 		else
 		{
 			current->_right = new TreeNode<T>(x);
-			_size++;
 		}
 	}
 	else

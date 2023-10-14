@@ -11,7 +11,6 @@ void suggestedHiddenCase1b();
 void suggestedHiddenCase2();
 void excerciseTest(bool printWithHeight = true);
 
-//
 int main() {
 
 	testInsertion1(true);
@@ -19,6 +18,8 @@ int main() {
 	//testSearchMinMax();
 	//testSuccessor();
 	//testInsertion2(true);
+
+	int* ptr = new int(1);
 
 	excerciseTest();
 
