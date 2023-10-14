@@ -14,13 +14,10 @@ void excerciseTest(bool printWithHeight = true);
 int main() {
 
 	testInsertion1(true);
-	//testExist();
+	testExist();
 	testSearchMinMax();
 	//testSuccessor();
 	//testInsertion2(true);
-
-	int* ptr = new int(1);
-
 	excerciseTest();
 
 }

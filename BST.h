@@ -48,7 +48,7 @@ public:
 	void preOrderPrint();
 	T searchMax() { return _searchMax(_root)->_item; }
 	T searchMin() { return _searchMin(_root)->_item; }
-	bool exist(T x) { return T(); };
+	bool exist(T x);
 	T search(T x) { return T(); };
 	T successor(T);
 };
@@ -201,6 +201,23 @@ TreeNode<T>* BinarySearchTree<T>::_searchMin(TreeNode<T>* current) {
 		current = current->_left;
 	}
 	return current;
+}
+
+template <class T>
+bool BinarySearchTree<T>::exist(T x) {
+	TreeNode<T>* current = _root;
+	while (current) {
+		if (x == current->_item) {
+			return true;
+		}
+		if (x > current->_item) {
+			current = current->_right;
+		}
+		else {
+			current = current->_left;
+		}
+	}
+	return false;
 }
 
 template <class T>
