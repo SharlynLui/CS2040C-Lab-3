@@ -16,7 +16,7 @@ int main() {
 	testInsertion1(true);
 	testExist();
 	testSearchMinMax();
-	//testSuccessor();
+	testSuccessor();
 	//testInsertion2(true);
 	excerciseTest();
 
@@ -135,10 +135,10 @@ void testSuccessor() {
 		bsti.insert(i * 7);
 	}
 
-//	bsti.printTree(false);
+	//bsti.printTree(false); //uncomment this after trial
 	cout << endl << endl;
 
-	for (int i = 0; i < 70; i+=10)
+	for (int i = 0; i < 70; i+=10) //change to 70
 		cout << "The successor of " << i << " in the BST is " << bsti.successor(i) << endl;
 	cout << endl << endl;
 }

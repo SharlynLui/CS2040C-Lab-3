@@ -225,11 +225,32 @@ TreeNode<T>* BinarySearchTree<T>::_search(TreeNode<T>* current, T x) {
 	return NULL;
 }
 
-
 template <class T>
-T BinarySearchTree<T>::successor(T x)
-{
-	return T();
+T BinarySearchTree<T>::successor(T x) {
+TreeNode<T>* lastleft = _root;
+TreeNode<T>* current = _root;
+if (x <= searchMin()) {
+	return searchMin();
+}
+if (x >= searchMax()) {
+	return searchMax();
+}
+while (current) {
+	if (x == current->_item) {
+		break; //ensures that current points at the key
+	}
+	if (x > current->_item) {
+		current = current->_right;
+	}
+	if (x < current->_item) {
+		lastleft = current;
+		current = current->_left;
+	}
+}
+if (current != NULL && current->_right) {
+	return _searchMin(current->_right)->_item;
+}
+return lastleft->_item; //if not found in tree or has no right child
 }
 
 template <class T>
