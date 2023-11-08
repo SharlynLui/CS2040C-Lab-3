@@ -17,7 +17,7 @@ int main() {
 	testExist();
 	testSearchMinMax();
 	testSuccessor();
-	//testInsertion2(true);
+	testInsertion2(true);
 	excerciseTest();
 
 }

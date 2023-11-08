@@ -12,9 +12,9 @@ private:
 	TreeNode<T>* _left;
 	TreeNode<T>* _right;
 	int _height;
+	int _weight;
 public:
 	TreeNode(T x) { _left = _right = NULL; _item = x; _height = 0; };
-
 	friend BinarySearchTree<T>;
 };
 
@@ -36,6 +36,7 @@ protected:
 	TreeNode<T>* _searchMin(TreeNode<T>*);
 	TreeNode<T>* _search(TreeNode<T>*, T);
 	void _destroySubTree(TreeNode<T>*);
+	T _addWeight(TreeNode<T>*);
 
 public:
 	BinarySearchTree() { _root = NULL; _size = 0; }
@@ -53,7 +54,23 @@ public:
 	T successor(T);
 };
 
-
+template <class T>
+T BinarySearchTree<T>::_addWeight(TreeNode<T>* current) {
+	//no child
+	if (!current->_left && !current->_right) {
+		return 1;
+	}
+	//right child only
+	if (!current->_left) {
+		return (current->_right->_weight + 1);
+	}
+	//left child only
+	if (!current->_right) {
+		return (current->_left->_weight + 1);
+	}
+	//both child
+	return (current->_left->_weight + current->_right->_weight + 1);
+}
 
 template <class T>
 void BinarySearchTree<T>::insert(T x)
@@ -183,6 +200,8 @@ TreeNode<T>* BinarySearchTree<T>::_insert(TreeNode<T>* current, T x) {
 		return current; // When the node already existed in the tree
 
 	current->_height = max(current->_left ? current->_left->_height : -1, current->_right ? current->_right->_height : -1) + 1;
+	current->_weight = _addWeight(current);
+	cout << current->_item << ":" << current->_weight << ", ";
 	return current;
 }
 
